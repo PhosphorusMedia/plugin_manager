@@ -179,4 +179,10 @@ impl QueryResultData {
     pub fn duration(&self) -> &Duration {
         &self.duration
     }
+
+    pub fn duration_str(&self) -> String {
+        let secs = self.duration.as_secs();
+        let mins: u64 = secs / 60;
+        return format!("{}:{}", mins, secs - mins * 60);
+    }
 }
