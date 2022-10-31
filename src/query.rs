@@ -91,6 +91,7 @@ impl QueryInfo {
 
 /// Holds the information pulled from the
 /// plugin service
+#[derive(PartialEq, Clone, PartialOrd, Debug)]
 pub struct QueryResult {
     data: Vec<QueryResultData>,
 }
@@ -118,7 +119,7 @@ pub trait Deserializable<S, R, P> {
     fn parse(source: &S) -> Result<R, Box<dyn Error>>;
 }
 
-#[derive(Debug)]
+#[derive(PartialEq, Clone, PartialOrd, Debug)]
 /// Holds the relevant information pulled from
 /// plugins' services.
 pub struct QueryResultData {
