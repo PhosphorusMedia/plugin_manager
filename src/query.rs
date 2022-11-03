@@ -181,9 +181,14 @@ impl QueryResultData {
         &self.duration
     }
 
-    pub fn duration_str(&self) -> String {
-        let secs = self.duration.as_secs();
-        let mins: u64 = secs / 60;
+    pub fn duration_str(duration: std::time::Duration) -> String {
+        let secs = duration.as_secs();
+        let mut mins: u64 = secs / 60;
+        if mins > 60 {
+            let hours: u64 = mins / 60;
+            mins = mins - hours * 60;
+            return format!("{}:{:02}:{:02}", hours, mins, secs - hours * 3600 - mins * 60);
+        }
         return format!("{}:{}", mins, secs - mins * 60);
     }
 }
