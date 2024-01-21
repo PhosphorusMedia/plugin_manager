@@ -25,7 +25,7 @@ impl DownloadBuilder {
 }
 
 impl Downloader {
-    /// Used the provided `download_fn` to
+    /// Uses the provided `download_fn` to
     /// perform the actual download. Download progress
     /// information are sent through `tx` channel as
     pub fn download(
